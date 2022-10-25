@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(500).send({ message: 'The server encountered an error!' });
     }
 });
 
@@ -30,12 +30,10 @@ router.post('/login', async (req, res) => {
                 exclude: ['password']
             }
         });
-
         if (!user) {
             res.status(400).json({ message: 'Invalid user credentials!' });
             return;
         }
-
         //Check if password is valid
         const validPassword = user.checkPassword(req.body.password);
 
@@ -43,14 +41,13 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Invalid user credentials!' });
             return;
         }
-        //console.log('accepted user and password');
         //Session save
         req.session.save(() => {
             req.session.user_id = user.id;
             req.session.username = user.username;
             req.session.loggedIn = true;
 
-            res.json({ user, message: 'You are now logged in!' });
+            res.status(200).json({ user, message: 'You are now logged in!' });
         });
     } catch (err) {
         console.error(err);
