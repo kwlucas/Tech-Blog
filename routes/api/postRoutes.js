@@ -46,3 +46,29 @@ router.put('/:id', async (req, res) => {
         res.status(500).send({ message: 'The server encountered an error!' });
     }
 });
+
+router.delete('/:id', async (req, res) => {
+    try {
+        if (req.session.userId) {
+            const postData = await Post.destroy({
+                where: {
+                    id: req.params.id,
+                    user_id: req.session.userId
+                }
+            });
+
+            if (postData) {
+                res.status(200).json(postData);
+            }
+            else {
+                res.status(404).send({ message: 'Post not found!' });
+            }
+        }
+        else {
+            res.status(401).send({ message: 'Unauthorized request!' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: 'The server encountered an error!' });
+    }
+});
