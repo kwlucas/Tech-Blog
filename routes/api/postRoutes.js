@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         if (req.session.userId) {
             const newPost = {
                 ...req.body,
-                user_id: req.session.uderId
+                user_id: req.session.userId
             }
             const postData = await Post.create(newPost);
             res.status(201).json(postData);
@@ -30,13 +30,8 @@ router.put('/:id', async (req, res) => {
                     user_id: req.session.userId
                 }
             });
-
-            if (postData) {
-                res.status(200).json(postData);
-            }
-            else {
-                res.status(404).send({ message: 'Post not found!' });
-            }
+            //Ternary operate checking if data exists and accordingly responding with the data or a 404
+            postData ? res.status(200).json(postData) : res.status(404).send({ message: 'Post not found!' });
         }
         else {
             res.status(401).send({ message: 'Unauthorized request!' });
@@ -56,13 +51,8 @@ router.delete('/:id', async (req, res) => {
                     user_id: req.session.userId
                 }
             });
-
-            if (postData) {
-                res.status(200).json(postData);
-            }
-            else {
-                res.status(404).send({ message: 'Post not found!' });
-            }
+            //Ternary operate checking if data exists and accordingly responding with the data or a 404
+            postData ? res.status(200).json(postData) : res.status(404).send({ message: 'Post not found!' });
         }
         else {
             res.status(401).send({ message: 'Unauthorized request!' });
