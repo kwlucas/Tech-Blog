@@ -57,3 +57,15 @@ router.post('/login', async (req, res) => {
         res.status(500).send({ message: 'The server encountered an error!' });
     }
 });
+
+router.post('/logout', (req, res) => {
+    console.log('log out');
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+
+        });
+    } else {
+        res.status(404).end();
+    }
+});
