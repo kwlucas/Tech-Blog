@@ -31,15 +31,13 @@ router.post('/login', async (req, res) => {
             }
         });
         if (!user) {
-            res.status(400).json({ message: 'Invalid user credentials!' });
-            return;
+            res.status(400).json({ message: 'Invalid user credentials!' }).end();
         }
         //Check if password is valid
         const validPassword = user.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Invalid user credentials!' });
-            return;
+            res.status(400).json({ message: 'Invalid user credentials!' }).end();
         }
         //Session save
         req.session.save(() => {
