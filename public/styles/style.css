@@ -1,6 +1,6 @@
-header>nav {
+/* header>nav {
     height: 5rem;
-}
-nav a {
+} */
+header a {
     text-decoration: none;
 }
