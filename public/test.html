@@ -30,7 +30,11 @@
                 <input type="text" id="username-input" class="title-4" placeholder="Username" aria-label="Input username" required />
                 <input type="password" id="password-input" class="title-4" placeholder="Password" aria-label="Input password" title="Must meet password criteria!" pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_])[\w!@#$%^&*]{8,16}$" required />
                 <button type="submit" class="success title-4">Signup</button>
-                <ul class="criteria list">
+                <ul id="criteria-list" class="bullet-point crossmark inside inline-list">
+                    <li>Password lacks a capital letter</li>
+                    <li>Password lacks a lowercase letter</li>
+                    <li>Password lacks a digit</li>
+                    <li>Password lacks a special character</li>
                 </ul>
                 <p class="italics center-text">Have an account? <a>Login</a></p>
             </div>
