@@ -25,20 +25,34 @@
         </nav>
     </header>
     <main>
-        <form id="signup-form" class="nudge-3">
-            <div class="slate-section format-all-elements set-per-row-1 stack">
-                <input type="text" id="username-input" class="title-4" placeholder="Username" aria-label="Input username" required />
-                <input type="password" id="password-input" class="title-4" placeholder="Password" aria-label="Input password" title="Must meet password criteria!" pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_])[\w!@#$%^&*]{8,16}$" required />
-                <button type="submit" class="success title-4">Signup</button>
-                <ul id="criteria-list" class="bullet-point crossmark inside inline-list">
-                    <li>Password lacks a capital letter</li>
-                    <li>Password lacks a lowercase letter</li>
-                    <li>Password lacks a digit</li>
-                    <li>Password lacks a special character</li>
-                </ul>
-                <p class="italics center-text">Have an account? <a>Login</a></p>
+        <div class="card clickable hover-raise">
+            <div class="header inline seperate shaded elements-prod-horizontal-2">
+                <div class="inline">
+                    <h2>Title</h2>
+                    <div class="italics prod-right-2">by USER</div>
+                </div>
+                <div>
+                    Posted on DATE
+                </div>
             </div>
-        </form>
+            <div class="body">
+                Card content goes here.
+            </div>
+        </div>
+        <div class="card clickable hover-raise">
+            <div class="header inline seperate shaded elements-prod-horizontal-2">
+                <div class="inline">
+                    <h2>Title</h2>
+                    <div class="italics prod-right-2">by USER</div>
+                </div>
+                <div>
+                    Posted on DATE
+                </div>
+            </div>
+            <div class="body">
+                Card content goes here.
+            </div>
+        </div>
     </main>
 </body>
 

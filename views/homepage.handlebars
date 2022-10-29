@@ -1,0 +1,18 @@
+<main>
+    {{#each posts}}
+    <div class="card clickable hover-raise" post_id="{{this.id}}">
+        <div class="header inline seperate shaded elements-prod-horizontal-2">
+            <div class="inline">
+                <h2>{{this.title}}</h2>
+                <div class="italics prod-right-2">by {{this.user.username}}</div>
+            </div>
+            <div>
+                Posted {{format_date this.createdAt}}
+            </div>
+        </div>
+        <div class="body">
+            {{this.content}}
+        </div>
+    </div>
+    {{/each}}
+</main>
