@@ -4,7 +4,7 @@ const { User, Post } = require('../models');
 async function getSignedInUser(r) {
     let signedInUser = ''
     //Check if user is signed in
-    if(r.session.user_id){
+    if (r.session.user_id) {
         //Get user that is signed in
         signedInUser = await User.findByPk(r.session.user_id, {
             attributes: {
@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
                 attributes: {
                     exclude: ['password']
                 }
-             }]
+            }]
         })
-        const signedInUser = await getSignedInUser();
+        const signedInUser = await getSignedInUser(req);
         //render homepage
         res.render('homepage', { posts, signedInUser });
     } catch (err) {
