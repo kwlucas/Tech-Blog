@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 
+async function getSignedInUser(r) {
+    let signedInUser = ''
+    //Check if user is signed in
+    if(r.session.user_id){
+        //Get user that is signed in
+        signedInUser = await User.findByPk(r.session.user_id, {
+            attributes: {
+                exclude: ['password']
+            }
+        });
+    }
+    return signedInUser;
+}
 
 router.get('/', async (req, res) => {
     //console.log('home page request hit');
@@ -15,16 +28,7 @@ router.get('/', async (req, res) => {
                 }
              }]
         })
-        let signedInUser = ''
-        //Check if user is signed in
-        if(req.session.user_id){
-            //Get user that is signed in
-            signedInUser = await User.findByPk(req.session.user_id, {
-                attributes: {
-                    exclude: ['password']
-                }
-            });
-        }
+        const signedInUser = await getSignedInUser();
         //render homepage
         res.render('homepage', { posts, signedInUser });
     } catch (err) {
