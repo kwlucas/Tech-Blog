@@ -1,0 +1,60 @@
+<main>
+    <div class="card clickable hover-raise" post_id="{{post.id}}">
+        <div class="header inline seperate shaded elements-prod-horizontal-2">
+            <div class="inline">
+                <h2>{{post.title}}</h2>
+                <div class="italics prod-right-2">by {{post.user.username}}</div>
+            </div>
+            <div>
+                Posted {{format_date post.createdAt}}
+            </div>
+        </div>
+        <div class="body">
+            {{post.content}}
+        </div>
+    </div>
+    <section class="box">
+        <h2>Comments</h2>
+        <hr>
+        <div>
+            {{#if signedInUser}}
+            <form>
+                <div class="card">
+                    <div class="header">
+                        <h3>Make a comment on this post!</h3>
+                    </div>
+                    <div class="body">
+                        <textarea id="comment-entry" placeholder="What do you want to say?" required>
+                        </textarea>
+                    </div>
+                    <div class="footer">
+                        <button class="success float-right" type="submit">Post</button>
+                    </div>
+                </div>
+            </form>
+            {{/if}}
+            {{#if post.comments}}
+            {{#each post.comments}}
+            <div class="card">
+                <div class="header">
+                    <h3>{{this.user.username}}</h3>
+                    <div>{{format_date this.createdAt}}</div>
+                </div>
+                <div class="body">
+                    {{this.content}}
+                </div>
+                {{#ifComparison "===" this.user.id signedInUser.id}}
+                <div class="footer">
+                    <button class="danger float-right" comment_id="{{this.id}}">Delete</button>
+                </div>
+                {{/ifComparison}}
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="container fill center">
+                <h3>There are no comments on this post yet.</h3>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+</main>
