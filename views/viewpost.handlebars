@@ -13,4 +13,23 @@
             {{post.content}}
         </div>
     </div>
+    <section class="box">
+        <h2>Comments</h2>
+        <hr>
+        <div>
+            {{#if post.comments}}
+            {{#each post.comments}}
+            <div class="card">
+                <div class="header">
+                    <h3>{{this.user.username}}</h3>
+                    <div>{{format_date this.createdAt}}</div>
+                </div>
+                <div class="body">
+                    {{this.content}}
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+    </section>
 </main>
