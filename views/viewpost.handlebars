@@ -1,0 +1,16 @@
+<main>
+    <div class="card clickable hover-raise" post_id="{{post.id}}">
+        <div class="header inline seperate shaded elements-prod-horizontal-2">
+            <div class="inline">
+                <h2>{{post.title}}</h2>
+                <div class="italics prod-right-2">by {{post.user.username}}</div>
+            </div>
+            <div>
+                Posted {{format_date post.createdAt}}
+            </div>
+        </div>
+        <div class="body">
+            {{post.content}}
+        </div>
+    </div>
+</main>
