@@ -46,3 +46,13 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
 });
+
+//sign up page
+router.get('/signup', (req, res) => {
+    //If already signed in redirect to homepage
+    if (req.session.user_id) {
+        res.redirect('/');
+        return;
+    }
+    res.render('signup');
+});
