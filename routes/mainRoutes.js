@@ -36,3 +36,13 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+//login page
+router.get('/login', (req, res) => {
+    //If already signed in redirect to homepage
+    if (req.session.user_id) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
