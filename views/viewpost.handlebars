@@ -17,6 +17,22 @@
         <h2>Comments</h2>
         <hr>
         <div>
+            {{#if signedInUser}}
+            <form>
+                <div class="card">
+                    <div class="header">
+                        <h3>Make a comment on this post!</h3>
+                    </div>
+                    <div class="body">
+                        <textarea id="comment-entry" placeholder="What do you want to say?" required>
+                        </textarea>
+                    </div>
+                    <div class="footer">
+                        <button class="success float-right" type="submit">Post</button>
+                    </div>
+                </div>
+            </form>
+            {{/if}}
             {{#if post.comments}}
             {{#each post.comments}}
             <div class="card">
