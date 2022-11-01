@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
                     exclude: ['password']
                 }
             }]
-        })
+        });
         const signedInUser = await getSignedInUser(req);
         //render homepage
         res.render('homepage', { posts, signedInUser });
