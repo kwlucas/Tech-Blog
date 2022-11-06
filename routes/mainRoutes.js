@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 async function getSignedInUser(r) {
     let signedInUser = ''
@@ -33,6 +33,35 @@ router.get('/', async (req, res) => {
         res.render('homepage', { posts, signedInUser });
     } catch (err) {
         console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/post/:id', async (req, res) => {
+    try {
+        //Get specified post
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{
+                model: User,
+                as: 'author',
+                attributes: {
+                    exclude: ['password']
+                }
+            },
+            {
+                model: Comment,
+                include: [User],
+            }]
+        });
+        const signedInUser = await getSignedInUser(req);
+        if (postData) {
+            //Render post display page with the post data
+            res.render('viewpost', { postData, signedInUser });
+        } else {
+            res.status(404).end();
+        }
+    } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
