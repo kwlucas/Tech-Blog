@@ -1,0 +1,20 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "A full stack blog site.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwlucas/Tech-Blog.git"
+  },
+  "author": "Kyle Lucas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwlucas/Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/kwlucas/Tech-Blog#readme"
+}
