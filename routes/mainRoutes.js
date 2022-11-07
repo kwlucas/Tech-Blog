@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         const posts = await Post.findAll({
             include: [{
                 model: User,
-                as: 'author',
+                //as: 'author',
                 attributes: {
                     exclude: ['password']
                 }
@@ -43,7 +43,7 @@ router.get('/post/:id', async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: [{
                 model: User,
-                as: 'author',
+                //as: 'author',
                 attributes: {
                     exclude: ['password']
                 }
@@ -85,3 +85,5 @@ router.get('/signup', (req, res) => {
     }
     res.render('signup');
 });
+
+module.exports = router;
