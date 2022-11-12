@@ -5,27 +5,27 @@ module.exports = {
   ifComparison: (operator, item1, item2) => {
     switch (operator) {
       case '==':
-        return (item1 == item2)
+        return (item1 == item2);
       case '===':
-        return (item1 === item2)
+        return (item1 === item2);
       case '!=':
-        return (item1 != item2)
+        return (item1 != item2);
       case '!==':
-        return (item1 !== item2)
+        return (item1 !== item2);
       case '<':
-        return (item1 < item2)
+        return (item1 < item2);
       case '<=':
-        return (item1 <= item2)
+        return (item1 <= item2);
       case '>':
-        return (item1 > item2)
+        return (item1 > item2);
       case '>=':
-        return (item1 >= item2)
+        return (item1 >= item2);
       case '&&':
-        return (item1 && item2)
+        return (item1 && item2);
       case '||':
-        return (item1 || item2)
+        return (item1 || item2);
       default:
-        return false
+        return false;
     }
   }
 };
