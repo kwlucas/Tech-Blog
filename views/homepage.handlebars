@@ -1,4 +1,7 @@
 <main>
+    {{#if signedInUser}}
+    <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
+    {{/if}}
     {{#each posts}}
     <div class="card clickable hover-raise" post_id="{{this.id}}">
         <div class="header inline seperate shaded elements-prod-horizontal-2">
