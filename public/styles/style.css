@@ -20,3 +20,7 @@ header a {
 .button-group .button:not(:last-child){
     margin-right: 0.15rem;
 }
+
+textarea.allow-resize-vertical{
+    resize: vertical;
+}
