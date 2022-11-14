@@ -4,23 +4,3 @@
 header a {
     text-decoration: none;
 }
-
-.button-group {
-    display: inline-flex;
-    width: 100%;
-}
-
-/* Make buttons within a button group scale automatically to fill group */
-.button-group button,
-.button-group .button{
-    flex: 1 1 0;
-}
-
-.button-group button:not(:last-child),
-.button-group .button:not(:last-child){
-    margin-right: 0.15rem;
-}
-
-textarea.allow-resize-vertical{
-    resize: vertical;
-}
