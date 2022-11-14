@@ -25,34 +25,19 @@
         </nav>
     </header>
     <main>
-        <div class="card clickable hover-raise">
+        <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
+        <form id="new-post-form" class="card">
             <div class="header inline seperate shaded elements-prod-horizontal-2">
-                <div class="inline">
-                    <h2>Title</h2>
-                    <div class="italics prod-right-2">by USER</div>
-                </div>
-                <div>
-                    Posted on DATE
-                </div>
+                <input id="title-input" class="heading-2 fill" type="text" autocomplete="off" required placeholder="Enter Post Title"></input>
             </div>
             <div class="body">
-                Card content goes here.
+                <textarea id="content-input" class="fill allow-resize-vertical" rows="5" required placeholder="Enter your post content here."></textarea>
             </div>
-        </div>
-        <div class="card clickable hover-raise">
-            <div class="header inline seperate shaded elements-prod-horizontal-2">
-                <div class="inline">
-                    <h2>Title</h2>
-                    <div class="italics prod-right-2">by USER</div>
-                </div>
-                <div>
-                    Posted on DATE
-                </div>
+            <div class="footer button-group">
+                <button id="reset-btn" class="danger" type="reset">Clear</button>
+                <button id="submit-btn" class="success" type="submit">Submit</button>
             </div>
-            <div class="body">
-                Card content goes here.
-            </div>
-        </div>
+        </form>
     </main>
 </body>
 
