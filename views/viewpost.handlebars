@@ -36,17 +36,17 @@
                 </div>
             </form>
             {{/if}}
-            {{#if post.comments}}
-            {{#each post.comments}}
+            {{#if post.Comments}}
+            {{#each post.Comments}}
             <div class="card">
                 <div class="header">
-                    <h3>{{this.user.username}}</h3>
+                    <h3>{{this.User.username}}</h3>
                     <div>{{format_date this.createdAt}}</div>
                 </div>
                 <div class="body">
                     {{this.content}}
                 </div>
-                {{#ifComparison "===" this.user.id signedInUser.id}}
+                {{#ifComparison "===" this.User.id signedInUser.id}}
                 <div class="footer">
                     <button class="danger float-right" comment_id="{{this.id}}">Delete</button>
                 </div>
@@ -55,7 +55,7 @@
             {{/each}}
             {{else}}
             <div class="container fill center">
-                <h3>There are no comments on this post yet.</h3>
+                <h3>There are no Comments on this post yet.</h3>
             </div>
             {{/if}}
         </div>
