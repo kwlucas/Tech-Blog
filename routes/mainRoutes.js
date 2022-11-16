@@ -11,6 +11,7 @@ async function getSignedInUser(r) {
                 exclude: ['password']
             }
         });
+        signedInUser = signedInUser.get({ plain: true });
     }
     return signedInUser;
 }
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
     //console.log('home page request hit');
     try {
         //Get all posts
-        const posts = await Post.findAll({
+        const postData = await Post.findAll({
             include: [{
                 model: User,
                 //as: 'author',
@@ -28,6 +29,7 @@ router.get('/', async (req, res) => {
                 }
             }]
         });
+        const posts = postData.map((post) => post.get({ plain: true }));
         const signedInUser = await getSignedInUser(req);
         //render homepage
         res.render('homepage', { posts, signedInUser });
@@ -55,8 +57,9 @@ router.get('/post/:id', async (req, res) => {
         });
         const signedInUser = await getSignedInUser(req);
         if (postData) {
+            const post = postData.get({ plain: true })
             //Render post display page with the post data
-            res.render('viewpost', { postData, signedInUser });
+            res.render('viewpost', { post, signedInUser });
         } else {
             res.status(404).end();
         }

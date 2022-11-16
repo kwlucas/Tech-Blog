@@ -7,7 +7,7 @@
         <div class="header inline seperate shaded elements-prod-horizontal-2">
             <div class="inline">
                 <h2>{{this.title}}</h2>
-                <div class="italics prod-right-2">by {{this.user.username}}</div>
+                <div class="italics prod-right-2">by {{this.User.username}}</div>
             </div>
             <div>
                 Posted {{format_date this.createdAt}}
@@ -16,7 +16,7 @@
         <div class="body">
             {{this.content}}
         </div>
-        {{#ifComparison "===" this.user.id signedInUser.id}}
+        {{#ifComparison "===" this.User.id signedInUser.id}}
         <div class="footer">
             <button class="danger float-right" comment_id="{{this.id}}">Delete</button>
         </div>
@@ -26,3 +26,4 @@
     </div>
     {{/each}}
 </main>
+<script src="./scripts/postLinks.js"></script>
