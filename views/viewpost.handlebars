@@ -2,7 +2,7 @@
     {{#if signedInUser}}
     <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
     {{/if}}
-    <div class="card clickable hover-raise" post_id="{{post.id}}">
+    <div class="card" post_id="{{post.id}}">
         <div class="header inline seperate shaded elements-prod-horizontal-2">
             <div class="inline">
                 <h2>{{post.title}}</h2>
@@ -39,8 +39,8 @@
             {{#if post.Comments}}
             {{#each post.Comments}}
             <div class="card">
-                <div class="header">
-                    <h3>{{this.User.username}}</h3>
+                <div class="header inline seperate">
+                    <h3 class="title-5">{{this.User.username}}</h3>
                     <div>{{format_date this.createdAt}}</div>
                 </div>
                 <div class="body">
