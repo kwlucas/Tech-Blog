@@ -38,4 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.location.replace('/dashboard');
     });
+
+    document.querySelector('#comment-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const post_id = document.querySelector('[post_id]').getAttribute('post_id');
+        const content = document.querySelector('#comment-entry').textContent;
+        await fetch('/api/comments', {
+            method: 'POST',
+            body: JSON.stringify({
+                post_id,
+                content
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        event.target.reset();
+        //Reload the page (while preserving scroll position) 
+        document.location.reload();
+    });
 })
