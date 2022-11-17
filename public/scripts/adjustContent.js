@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#new-post-form').addEventListener('submit', async function (event) {
         event.preventDefault();
-        const title = document.querySelector('#title-input').textContent;
-        const content = document.querySelector('#content-input').textContent;
+        const title = document.querySelector('#title-input').value;
+        const content = document.querySelector('#content-input').value;
         const newPost = await fetch(`/api/posts/${post_id}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#edit-post-form').addEventListener('submit', async function (event) {
         event.preventDefault();
         const post_id = document.querySelector('[post_id]').getAttribute('post_id');
-        const title = document.querySelector('#title-input').textContent;
-        const content = document.querySelector('#content-input').textContent;
+        const title = document.querySelector('#title-input').value;
+        const content = document.querySelector('#content-input').value;
         await fetch(`/api/posts/${post_id}`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#comment-form').addEventListener('submit', async function (event) {
         event.preventDefault();
         const post_id = document.querySelector('[post_id]').getAttribute('post_id');
-        const content = document.querySelector('#comment-entry').textContent;
+        const content = document.querySelector('#comment-entry').value;
         await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({

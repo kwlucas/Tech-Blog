@@ -38,26 +38,20 @@ function checkCriteria(checkItem = '', appendTo) {
             existingMessages.push(element.textContent)
         });
     }
-    console.log(existingMessages);
     criteriaList.forEach(criteriaObj => {
         const { criteria, message } = criteriaObj;
         if (!criteria.test(checkItem) && !existingMessages.includes(message)) {
-            console.log(`The password must ${message}.`)
-            const newItem = document.createElement('li')
+            const newItem = document.createElement('li');
             newItem.textContent = message;
-            criteriaElements.push(newItem)
+            criteriaElements.push(newItem);
             appendTo.append(newItem);
         }
         else if (criteria.test(checkItem) && existingMessages.includes(message)) {
-            console.log('Criteria Met');
             const index = existingMessages.indexOf(message);
             const removeEl = criteriaElements[index];
             criteriaElements.splice(index, 1);
             existingMessages.splice(index, 1);
             removeEl.remove();
-        }
-        else if (criteria.test(checkItem)){
-            console.log('Passed test');
         }
     });
 }
