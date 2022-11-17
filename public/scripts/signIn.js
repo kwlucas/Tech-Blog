@@ -16,7 +16,7 @@ const criteriaList = [
         message: 'Contains a special character'
     },
     {
-        criteria: /^.{8}$/,
+        criteria: /^.{8,}$/,
         message: 'At least 8 characters long'
     },
     {
