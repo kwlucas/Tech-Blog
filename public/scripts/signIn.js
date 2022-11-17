@@ -1,3 +1,21 @@
+function checkCriteria(checkItem = '', appendTo, existingElements = []) {
+    const existingMessages = existingElements.map(element => {
+        return element.textContent
+    });
+    criteriaList.forEach(criteriaObj => {
+        const { criteria, message } = criteriaObj;
+        if(!checkItem.test(criteria) && !existingMessages.includes(message)){
+            const newItem = document.createElement('li')
+            newItem.textContent = message;
+            appendTo.append(newItem);
+        }
+        else if(checkItem.test(criteria) && existingMessages.includes(message)) {
+            const index = existingMessages.indexOf(message);
+            existingElements[index].remove();
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#login-form').addEventListener('submit', async function (event) {
