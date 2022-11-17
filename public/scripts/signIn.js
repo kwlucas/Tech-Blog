@@ -30,17 +30,20 @@ const criteriaList = [
 ]
 
 function checkCriteria(checkItem = '', appendTo, existingElements = []) {
-    const existingMessages = existingElements.map(element => {
-        return element.textContent
-    });
+    let existingMessages = [];
+    if(existingElements.length > 0){
+        existingElements.forEach(element => {
+            existingMessages.push(element.textContent)
+        });
+    }
     criteriaList.forEach(criteriaObj => {
         const { criteria, message } = criteriaObj;
-        if (!checkItem.test(criteria) && !existingMessages.includes(message)) {
+        if (!criteria.test(checkItem) && !existingMessages.includes(message)) {
             const newItem = document.createElement('li')
             newItem.textContent = message;
             appendTo.append(newItem);
         }
-        else if (checkItem.test(criteria) && existingMessages.includes(message)) {
+        else if (criteria.test(checkItem) && existingMessages.includes(message)) {
             const index = existingMessages.indexOf(message);
             existingElements[index].remove();
         }
@@ -104,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         passwordEl.addEventListener('keyup', function () {
             const currentInput = passwordEl.textContent;
-            const criteriaElements = document.querySelectorAll('#criteria-list>li');
+            let criteriaElements = (document.querySelectorAll('#criteria-list>li') || []);
             checkCriteria(currentInput, criteriaListEl, criteriaElements);
         });
     }
