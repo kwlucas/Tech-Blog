@@ -1,0 +1,28 @@
+<main>
+    <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
+    {{#each posts}}
+    <div class="card clickable hover-raise" post_id="{{this.id}}">
+        <div class="header inline seperate shaded elements-prod-horizontal-2">
+            <div class="inline">
+                <h2>{{this.title}}</h2>
+                <div class="italics prod-right-2">by {{this.User.username}}</div>
+            </div>
+            <div>
+                Posted {{format_date this.createdAt}}
+            </div>
+        </div>
+        <div class="body">
+            {{this.content}}
+        </div>
+        {{#ifComparison "===" this.User.id signedInUser.id}}
+        <div class="footer inline split">
+            <button id="edit-btn-{{this.id}}" class="caution">Edit</button>
+            <button id="delete-btn-{{this.id}}" class="danger">Delete</button>
+        </div>
+        {{else}}
+        {{!-- This is not the current user's post --}}
+        {{/ifComparison}}
+    </div>
+    {{/each}}
+</main>
+<script src="./scripts/postLinks.js"></script>
