@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const title = document.querySelector('#title-input').value;
             const content = document.querySelector('#content-input').value;
-            const newPost = await fetch(`/api/posts/${post_id}`, {
+            const newPost = await fetch(`/api/posts/`, {
                 method: 'POST',
                 body: JSON.stringify({
                     title,
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 }
             });
-            document.location.replace(`/post/${newPost.id}`);
+            document.location.replace(`/posts/${newPost.id}`);
         });
     }
 
