@@ -42,7 +42,7 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/create/:id', withAuth, async (req, res) => {
+router.get('/create', withAuth, async (req, res) => {
     try {
         //get the data of user that is signed in
         const signedInUser = await getSignedInUser(req);
