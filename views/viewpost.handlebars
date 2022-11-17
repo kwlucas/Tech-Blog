@@ -21,7 +21,7 @@
         <hr>
         <div>
             {{#if signedInUser}}
-            <form>
+            <form id="comment-form">
                 <div class="card">
                     <div class="header">
                         <h3>Make a comment on this post!</h3>
@@ -48,7 +48,7 @@
                 </div>
                 {{#ifComparison "===" this.User.id signedInUser.id}}
                 <div class="footer">
-                    <button class="danger float-right" comment_id="{{this.id}}">Delete</button>
+                    <button class="danger float-right" id="delete-btn-{{this.id}}">Delete</button>
                 </div>
                 {{/ifComparison}}
             </div>
@@ -61,3 +61,4 @@
         </div>
     </section>
 </main>
+<script src="../scripts/adjustContent.js"></script>

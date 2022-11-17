@@ -1,17 +1,17 @@
 <main>
     <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
-    <form id="new-post-form" class="card">
+    <form id="edit-post-form" class="card" post_id="{{post.id}}">
         <div class="header inline seperate shaded elements-prod-horizontal-2">
             <input id="title-input" class="heading-2 fill" type="text" autocomplete="off" required
-                placeholder="Enter Post Title"></input>
+                placeholder="Enter Post Title">{{post.title}}</input>
         </div>
         <div class="body">
             <textarea id="content-input" class="fill allow-resize-vertical" rows="5" required
-                placeholder="Enter your post content here."></textarea>
+                placeholder="Enter your post content here.">{{post.content}}</textarea>
         </div>
         <div class="footer button-group">
-            <button id="reset-btn" class="danger" type="reset">Clear</button>
-            <button id="submit-btn" class="success" type="submit">Submit</button>
+            <button id="cancel-btn-{{post.id}}" class="danger" type="reset">Cancel</button>
+            <button id="save-btn-{{post.id}}" class="success" type="submit">Save</button>
         </div>
     </form>
 </main>
