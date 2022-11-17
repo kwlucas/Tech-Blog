@@ -1,3 +1,34 @@
+const criteriaList = [
+    {
+        criteria: /^(?=.*\d).+$/,
+        message: 'Contains a digit'
+    },
+    {
+        criteria: /^(?=.*[A-Z]).+$/,
+        message: 'Contains a capital letter'
+    },
+    {
+        criteria: /^(?=.*[a-z]).+$/,
+        message: 'Contains a lowercase letter'
+    },
+    {
+        criteria: /^(?=.*[!@#$%^&*_]).+$/,
+        message: 'Contains a special character'
+    },
+    {
+        criteria: /^.{8}$/,
+        message: 'At least 8 characters long'
+    },
+    {
+        criteria: /^.{0,16}$/,
+        message: 'No more than 16 characters long'
+    },
+    {
+        criteria: /^[\w!@#$%^&*]+$/,
+        message: 'Contains only valid characters'
+    }
+]
+
 function checkCriteria(checkItem = '', appendTo, existingElements = []) {
     const existingMessages = existingElements.map(element => {
         return element.textContent
