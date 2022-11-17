@@ -1,6 +1,6 @@
 <main>
     <div id="user-signed-in" class="hidden">{{signedInUser.id}}</div>
-    <form id="new-post-form" class="card">
+    <form id="edit-post-form" class="card" post_id="{{post.id}}">
         <div class="header inline seperate shaded elements-prod-horizontal-2">
             <input id="title-input" class="heading-2 fill" type="text" autocomplete="off" required
                 placeholder="Enter Post Title">{{post.title}}</input>
@@ -10,8 +10,9 @@
                 placeholder="Enter your post content here.">{{post.content}}</textarea>
         </div>
         <div class="footer button-group">
-            <button id="cancel-btn-{{post.id}}" class="danger">Cancel</button>
+            <button id="cancel-btn-{{post.id}}" class="danger" type="reset">Cancel</button>
             <button id="save-btn-{{post.id}}" class="success" type="submit">Save</button>
         </div>
     </form>
 </main>
+<script src="../scripts/adjustContent.js"></script>
