@@ -29,23 +29,35 @@ const criteriaList = [
     }
 ]
 
-function checkCriteria(checkItem = '', appendTo, existingElements = []) {
+let criteriaElements = [];
+
+function checkCriteria(checkItem = '', appendTo) {
     let existingMessages = [];
-    if(existingElements.length > 0){
-        existingElements.forEach(element => {
+    if(criteriaElements.length > 0){
+        criteriaElements.forEach(element => {
             existingMessages.push(element.textContent)
         });
     }
+    console.log(existingMessages);
     criteriaList.forEach(criteriaObj => {
         const { criteria, message } = criteriaObj;
         if (!criteria.test(checkItem) && !existingMessages.includes(message)) {
+            console.log(`The password must ${message}.`)
             const newItem = document.createElement('li')
             newItem.textContent = message;
+            criteriaElements.push(newItem)
             appendTo.append(newItem);
         }
         else if (criteria.test(checkItem) && existingMessages.includes(message)) {
+            console.log('Criteria Met');
             const index = existingMessages.indexOf(message);
-            existingElements[index].remove();
+            const removeEl = criteriaElements[index];
+            criteriaElements.splice(index, 1);
+            existingMessages.splice(index, 1);
+            removeEl.remove();
+        }
+        else if (criteria.test(checkItem)){
+            console.log('Passed test');
         }
     });
 }
@@ -59,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginFormEl) {
         loginFormEl.addEventListener('submit', async function (event) {
             event.preventDefault();
-            const username = usernameEl.textContent;
-            const password = passwordEl.textContent;
+            const username = usernameEl.value;
+            const password = passwordEl.value;
             const response = await fetch('/api/users/login', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -85,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const criteriaListEl = document.querySelector('#criteria-list');
         signUpFormEl.addEventListener('submit', async function (event) {
             event.preventDefault();
-            const username = usernameEl.textContent;
-            const password = passwordEl.textContent;
+            const username = usernameEl.value;
+            const password = passwordEl.value;
             const response = await fetch('/api/users/', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -106,9 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         passwordEl.addEventListener('keyup', function () {
-            const currentInput = passwordEl.textContent;
-            let criteriaElements = (document.querySelectorAll('#criteria-list>li') || []);
-            checkCriteria(currentInput, criteriaListEl, criteriaElements);
+            const currentInput = passwordEl.value;
+            checkCriteria(currentInput, criteriaListEl);
         });
     }
 })
