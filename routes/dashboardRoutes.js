@@ -17,4 +17,29 @@ async function getSignedInUser(r) {
     return signedInUser;
 }
 
+router.get('/',withAuth, async (req, res) => {
+    try {
+        //get the data of user that is signed in
+        const signedInUser = await getSignedInUser(req);
+        //Get all posts
+        const postData = await Post.findAll({
+            where: {
+                user_id: signedInUser.id
+            },
+            include: [{
+                model: User,
+                attributes: {
+                    exclude: ['password']
+                }
+            }]
+        });
+        const posts = postData.map((post) => post.get({ plain: true }));
+        //render main dashboard
+        res.render('postmanager', { layout: 'dashboard', posts, signedInUser });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
