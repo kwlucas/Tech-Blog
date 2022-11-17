@@ -42,4 +42,16 @@ router.get('/',withAuth, async (req, res) => {
     }
 });
 
+router.get('/create/:id',withAuth, async (req, res) => {
+    try {
+        //get the data of user that is signed in
+        const signedInUser = await getSignedInUser(req);
+        //render new post page
+        res.render('newpost', { layout: 'dashboard', signedInUser });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
