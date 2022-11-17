@@ -46,4 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.location.replace('/dashboard');
         }
     });
+
+    if(signUpFormEl){
+        const criteriaListEl = document.querySelector('#criteria-list');
+        const passwordEl = document.querySelector('#password-input');
+        passwordEl.addEventListener('keyup', function () {
+            const currentInput = passwordEl.textContent;
+            const criteriaElements = document.querySelectorAll('#criteria-list>li');
+            checkCriteria(currentInput, criteriaListEl, criteriaElements);
+        });
+    }
 })
