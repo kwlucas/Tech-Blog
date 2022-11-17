@@ -17,7 +17,7 @@ async function getSignedInUser(r) {
     return signedInUser;
 }
 
-router.get('/',withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         //get the data of user that is signed in
         const signedInUser = await getSignedInUser(req);
@@ -42,12 +42,37 @@ router.get('/',withAuth, async (req, res) => {
     }
 });
 
-router.get('/create/:id',withAuth, async (req, res) => {
+router.get('/create/:id', withAuth, async (req, res) => {
     try {
         //get the data of user that is signed in
         const signedInUser = await getSignedInUser(req);
         //render new post page
         res.render('newpost', { layout: 'dashboard', signedInUser });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/edit/:id', withAuth, async (req, res) => {
+    try {
+        //Get specified post
+        const postData = await Post.findByPk(req.params.id, {
+            include: {
+                model: User,
+                attributes: {
+                    exclude: ['password']
+                }
+            }
+        });
+        const signedInUser = await getSignedInUser(req);
+        if (postData) {
+            const post = postData.get({ plain: true })
+            //Render post display page with the post data
+            res.render('editpost', { layout: 'dashboard', post, signedInUser });
+        } else {
+            res.status(404).end();
+        }
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
