@@ -4,3 +4,13 @@
 header a {
     text-decoration: none;
 }
+
+.card[post_id] {
+    transition: max-height ease 0.5s;
+    max-height: 5.8em;
+    overflow: hidden;
+}
+
+.card[post_id]:hover {
+    max-height: 6.5em;
+}
