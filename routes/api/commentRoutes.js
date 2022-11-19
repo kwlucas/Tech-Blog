@@ -4,10 +4,10 @@ const { Comment } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         console.log(req.session)
-        if (req.session.userId) {
+        if (req.session.user_id) {
             const newComment = {
                 ...req.body,
-                user_id: req.session.userId
+                user_id: req.session.user_id
             }
             const commentData = await Comment.create(newComment);
             res.status(201).json(commentData);
@@ -23,11 +23,11 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        if (req.session.userId) {
+        if (req.session.user_id) {
             const commentData = await Comment.destroy({
                 where: {
                     id: req.params.id,
-                    user_id: req.session.userId
+                    user_id: req.session.user_id
                 }
             });
             //Ternary operate checking if data exists and accordingly responding with the data or a 404
