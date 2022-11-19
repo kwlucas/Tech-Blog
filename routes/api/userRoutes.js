@@ -33,6 +33,8 @@ router.post('/login', async (req, res) => {
         if (!user) {
             res.status(400).json({ message: 'Invalid user credentials!' }).end();
         }
+        console.log(user);
+        console.log(req.body);
         //Check if password is valid
         const validPassword = user.checkPassword(req.body.password);
 
