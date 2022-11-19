@@ -27,11 +27,11 @@
                         <h3>Make a comment on this post!</h3>
                     </div>
                     <div class="body">
-                        <textarea id="comment-entry" placeholder="What do you want to say?" required>
+                        <textarea id="comment-entry fill" placeholder="What do you want to say?" required>
                         </textarea>
                     </div>
                     <div class="footer">
-                        <button class="success float-right" type="submit">Post</button>
+                        <button class="success" type="submit">Post</button>
                     </div>
                 </div>
             </form>
@@ -48,7 +48,7 @@
                 </div>
                 {{#ifComparison "===" this.User.id signedInUser.id}}
                 <div class="footer">
-                    <button class="danger float-right" id="delete-btn-{{this.id}}">Delete</button>
+                    <button class="danger" id="delete-btn-{{this.id}}">Delete</button>
                 </div>
                 {{/ifComparison}}
             </div>
