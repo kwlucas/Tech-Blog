@@ -3,6 +3,7 @@ const { Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
+        console.log(req.session)
         if (req.session.userId) {
             const newComment = {
                 ...req.body,
