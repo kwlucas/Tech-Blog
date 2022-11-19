@@ -20,7 +20,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.body.username);
         //Find user associated with entered username
         const user = await User.findOne({
             where: {
@@ -30,8 +29,6 @@ router.post('/login', async (req, res) => {
         if (!user) {
             res.status(400).json({ message: 'Invalid user credentials!' }).end();
         }
-        console.log(user);
-        console.log(req.body.password);
         //Check if password is valid
         const validPassword = user.checkPassword(req.body.password);
 
