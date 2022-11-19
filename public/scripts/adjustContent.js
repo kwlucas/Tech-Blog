@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 }
             });
-            document.location.replace(`/posts/${newPost.id}`);
+            document.location.replace(`/post/${newPost.id}`);
         });
     }
 
