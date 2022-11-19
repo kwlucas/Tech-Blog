@@ -3,7 +3,7 @@
     <form id="edit-post-form" class="card" post_id="{{post.id}}">
         <div class="header inline seperate shaded elements-prod-horizontal-2">
             <input id="title-input" class="heading-2 fill" type="text" autocomplete="off" required
-                placeholder="Enter Post Title">{{post.title}}</input>
+                placeholder="Enter Post Title" value="{{post.title}}"></input>
         </div>
         <div class="body">
             <textarea id="content-input" class="fill allow-resize-vertical" rows="5" required
@@ -15,4 +15,4 @@
         </div>
     </form>
 </main>
-<script src="../scripts/adjustContent.js"></script>
+<script src="../../scripts/adjustContent.js"></script>
