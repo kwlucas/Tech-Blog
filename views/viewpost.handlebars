@@ -45,7 +45,7 @@
                 <div class="body">
                     {{this.content}}
                 </div>
-                {{#ifComparison "===" this.User.id signedInUser.id}}
+                {{#ifComparison "===" this.User.id ../signedInUser.id}}
                 <div class="footer">
                     <button class="danger" id="delete-btn-{{this.id}}">Delete</button>
                 </div>
