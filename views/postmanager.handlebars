@@ -14,13 +14,14 @@
         <div class="body">
             {{this.content}}
         </div>
-        {{#ifComparison "===" this.User.id signedInUser.id}}
-        <div class="footer inline split">
+        {{#ifComparison "===" this.User.id ../signedInUser.id}}
+        <div class="footer button-group">
             <button id="edit-btn-{{this.id}}" class="caution">Edit</button>
             <button id="delete-btn-{{this.id}}" class="danger">Delete</button>
         </div>
         {{else}}
         {{!-- This is not the current user's post --}}
+        <div>{{this.User.id}} === {{../signedInUser.id}}</div>
         {{/ifComparison}}
     </div>
     {{/each}}
