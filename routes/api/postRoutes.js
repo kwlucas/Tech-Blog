@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
                 user_id: req.session.user_id
             }
             const postData = await Post.create(newPost);
-            res.status(201).json(postData);
+            res.status(201).json(postData);//.get({ plain: true })
         }
         else {
             res.status(401).send({ message: 'Unauthorized request!' });
