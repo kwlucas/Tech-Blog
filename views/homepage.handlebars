@@ -16,12 +16,10 @@
         <div class="body">
             {{this.content}}
         </div>
-        {{#ifComparison "===" this.User.id signedInUser.id}}
+        {{#ifComparison "===" this.User.id ../signedInUser.id}}
         <div class="footer">
-            <button class="danger float-right" comment_id="{{this.id}}">Delete</button>
+            <p class="italics">Look its your post!</p>
         </div>
-        {{else}}
-        <div class="footer">Test</div>
         {{/ifComparison}}
     </div>
     {{/each}}

@@ -4,13 +4,14 @@ const { Post } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        if (req.session.userId) {
+        //console.log(req.body);
+        if (req.session.user_id) {
             const newPost = {
                 ...req.body,
-                user_id: req.session.userId
+                user_id: req.session.user_id
             }
             const postData = await Post.create(newPost);
-            res.status(201).json(postData);
+            res.status(201).json(postData);//.get({ plain: true })
         }
         else {
             res.status(401).send({ message: 'Unauthorized request!' });
@@ -23,11 +24,11 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        if (req.session.userId) {
+        if (req.session.user_id) {
             const postData = await Post.update(req.body, {
                 where: {
                     id: req.params.id,
-                    user_id: req.session.userId
+                    user_id: req.session.user_id
                 }
             });
             //Ternary operate checking if data exists and accordingly responding with the data or a 404
@@ -44,11 +45,11 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        if (req.session.userId) {
+        if (req.session.user_id) {
             const postData = await Post.destroy({
                 where: {
                     id: req.params.id,
-                    user_id: req.session.userId
+                    user_id: req.session.user_id
                 }
             });
             //Ternary operate checking if data exists and accordingly responding with the data or a 404

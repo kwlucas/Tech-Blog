@@ -24,20 +24,18 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({
             where: {
                 username: req.body.username,
-            },
-            attributes: {
-                //Fields which won't be included in response data
-                exclude: ['password']
             }
         });
         if (!user) {
             res.status(400).json({ message: 'Invalid user credentials!' }).end();
+            return;
         }
         //Check if password is valid
         const validPassword = user.checkPassword(req.body.password);
 
         if (!validPassword) {
             res.status(400).json({ message: 'Invalid user credentials!' }).end();
+            return;
         }
         //Session save
         req.session.save(() => {

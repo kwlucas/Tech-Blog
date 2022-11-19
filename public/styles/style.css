@@ -4,3 +4,25 @@
 header a {
     text-decoration: none;
 }
+
+.card[post_id] {
+    transition: max-height ease 0.5s;
+    max-height: 5.8em;
+    overflow: hidden;
+}
+
+.card[post_id]:hover {
+    max-height: 8.2em;
+}
+
+.card[post_id]>.body {
+    transition: max-height ease 0.5s;
+    max-height: 2.5em;
+    overflow: hidden;
+}
+
+.card[post_id]:hover>.body {
+    transition: max-height ease 0.5s;
+    max-height: 3.2em;
+    overflow: hidden;
+}
