@@ -4,7 +4,7 @@ const { Post } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body);
+        //console.log(req.body);
         if (req.session.user_id) {
             const newPost = {
                 ...req.body,
