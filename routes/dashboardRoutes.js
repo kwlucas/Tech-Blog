@@ -31,7 +31,10 @@ router.get('/', withAuth, async (req, res) => {
                 attributes: {
                     exclude: ['password']
                 }
-            }]
+            }],
+            order: [
+                ['createdAt', 'DESC']
+            ]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
         //render main dashboard

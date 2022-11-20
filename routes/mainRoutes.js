@@ -27,7 +27,10 @@ router.get('/', async (req, res) => {
                 attributes: {
                     exclude: ['password']
                 }
-            }]
+            }],
+            order: [
+                ['createdAt', 'DESC']
+            ]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
         const signedInUser = await getSignedInUser(req);
@@ -53,6 +56,9 @@ router.get('/post/:id', async (req, res) => {
             {
                 model: Comment,
                 include: [User],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
             }]
         });
         const signedInUser = await getSignedInUser(req);
