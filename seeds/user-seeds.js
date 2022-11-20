@@ -4,22 +4,22 @@ const userData = [
     {
         id: 1,
         username: 'IamTheFirst',
-        password: 'Password1'
+        password: 'Password@1'
     },
     {
         id: 2,
         username: 'WebDevGirl',
-        password: 'Password2'
+        password: 'Password@2'
     },
     {
         id: 3,
         username: 'Base2Binary',
-        password: 'Password3'
+        password: 'Password@3'
     },
     {
         id: 4,
         username: 'TheAncientGeek',
-        password: 'Password4'
+        password: 'Password@4'
     },
 ];
 
