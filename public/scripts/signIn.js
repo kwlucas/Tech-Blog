@@ -69,16 +69,21 @@ function checkCriteria(checkItem = '', appendTo) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    //Get the form elements using their ids
     const passwordEl = document.querySelector('#password-input');
     const usernameEl = document.querySelector('#username-input');
     const loginFormEl = document.querySelector('#login-form');
     const signUpFormEl = document.querySelector('#signup-form');
-
+    //If a log in form was found
     if (loginFormEl) {
+        //Add an event listener on log in form for when it's submitted
         loginFormEl.addEventListener('submit', async function (event) {
+            //Ensure that form is not cleared on submit
             event.preventDefault();
+            //Get the values that are within the input
             const username = usernameEl.value;
             const password = passwordEl.value;
+            //Send in a login request to the server
             const response = await fetch('/api/users/login', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -90,21 +95,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            //If the response to the request is not a success send an alert
             if (!response.ok) {
                 alert('Invalid Credentials!');
             }
             else {
+                //Bring the now signed in user to the dashboard page
                 document.location.replace('/dashboard');
             }
         });
     }
 
+    //If a sign up form was found
     if (signUpFormEl) {
+        //Get the list element for displaying password criteria
         const criteriaListEl = document.querySelector('#criteria-list');
+        //Add an event listener on sign up form for when it's submitted
         signUpFormEl.addEventListener('submit', async function (event) {
+            //Ensure that form is not cleared on submit
             event.preventDefault();
+            //Get the values that are within the input
             const username = usernameEl.value;
             const password = passwordEl.value;
+            //Send a sign up request to the server
             const response = await fetch('/api/users/', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -115,16 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 }
             });
-    
+
+            //If the response to the request is not a success send an alert
             if (!response.ok) {
                 alert('Something went wrong!');
             }
             else {
+                //Bring the now signed in user to the dashboard page
                 document.location.replace('/dashboard');
             }
         });
+        //Add an event listener on the password input element for whenever a key is released
         passwordEl.addEventListener('keyup', function () {
+            //Get the current input for the password
             const currentInput = passwordEl.value;
+            //Check the password for validity and display the lacking criteria to page using function
             checkCriteria(currentInput, criteriaListEl);
         });
     }
