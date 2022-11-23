@@ -45,7 +45,7 @@ router.get('/', withAuth, async (req, res) => {
         res.render('postmanager', { layout: 'dashboard', posts, signedInUser });
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(500).json({ message: 'The server encountered an error!' });
     }
 });
 
@@ -58,7 +58,7 @@ router.get('/create', withAuth, async (req, res) => {
         res.render('newpost', { layout: 'dashboard', signedInUser });
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(500).json({ message: 'The server encountered an error!' });
     }
 });
 
@@ -86,7 +86,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         }
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(500).json({ message: 'The server encountered an error!' });
     }
 });
 

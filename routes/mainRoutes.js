@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
         res.render('homepage', { posts, signedInUser });
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(500).json({ message: 'The server encountered an error!' });
     }
 });
 
@@ -79,7 +79,7 @@ router.get('/post/:id', async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        res.status(500).json({ message: 'The server encountered an error!' });
     }
 });
 
