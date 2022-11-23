@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The blog site is a full-stack wep application that allows users to create, share, and comment on posts.
+The blog site is a full-stack web application that allows users to create, share, and comment on posts.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -84,7 +84,7 @@ Clicking on the edit button will bring you to a page where you can modify the ti
 
 ![Demo Gif](./public/images/TechBlogDemo3.gif)
 
-While signed in any comment you have made will have a delete button on the bottom right. Clicking on the delete buttom will remove the comment from the post. Note, this cannot be undone.
+While signed in, any comment you have made will have a delete button on the bottom right. Clicking on the delete button will remove the comment from the post. Note, this cannot be undone.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
