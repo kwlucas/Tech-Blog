@@ -53,6 +53,12 @@ The blog site is a full-stack web application that allows users to create, share
    ```sh
    npm install
    ```
+4. Create and configure a ".env" file as follows.
+   ```js
+   DB_NAME='blog_db'
+   DB_USER='yourUserHere' //your SQL user (use 'root' if you are not sure of another user you can use)
+   DB_PASSWORD='yourPasswordHere' //The password for your SQL user
+   ```
 3. Run NPM start in the console
     ```sh
     npm start
