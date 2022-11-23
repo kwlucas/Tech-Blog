@@ -1,14 +1,17 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+//Route for creating a comment
 router.post('/', async (req, res) => {
     try {
-        //console.log(req.session)
+        //Ensure that a user is signed in
         if (req.session.user_id) {
+            //Create a comment object using the request's body and the id of the user that is signed in
             const newComment = {
                 ...req.body,
                 user_id: req.session.user_id
             }
+            //Create a new post with the newComment object
             const commentData = await Comment.create(newComment);
             res.status(201).json(commentData);
         }
@@ -21,9 +24,12 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Route for deleting a specific comment
 router.delete('/:id', async (req, res) => {
     try {
+        //Ensure that a user is signed in
         if (req.session.user_id) {
+            //Find a comment with the specified id that is owned by the signed in user
             const commentData = await Comment.destroy({
                 where: {
                     id: req.params.id,
