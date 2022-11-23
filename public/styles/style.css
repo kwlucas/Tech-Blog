@@ -12,7 +12,7 @@ header a {
 }
 
 .preview.card[post_id]:hover {
-    max-height: 8.2em;
+    max-height: 9em;
 }
 
 .preview.card[post_id]>.body {
