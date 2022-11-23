@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'DELETE'
             });
             //Reload the page (while preserving scroll position) so that the comments update
-            document.location.replace('/dashboard');
+            document.location.reload();
         });
     });
 })
