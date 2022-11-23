@@ -1,6 +1,9 @@
 # Tech-Blog
 > Create, manage and share posts about any tech related topic.
 
+[Deployed Application](https://sheltered-escarpment-82934.herokuapp.com/)
+> Note: On November 28th, 2022, the Heroku free plans will be discontinued and the deployed application may no longer be available.
+
 <div id="top"></div>
 
 <!-- TABLE OF CONTENTS -->
@@ -97,5 +100,9 @@ While signed in, any comment you have made will have a delete button on the bott
 * [Kyle Lucas](https://github.com/kwlucas)
 
 Project link: [Repository](https://github.com/kwlucas/Tech-Blog)
+
+Deployed Application: [Tech Blog](https://sheltered-escarpment-82934.herokuapp.com/)
+
+> Note: On November 28th, 2022, the Heroku free plans will be discontinued and the deployed application may no longer be available.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
