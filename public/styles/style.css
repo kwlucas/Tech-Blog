@@ -1,26 +1,28 @@
-/* header>nav {
-    height: 5rem;
-} */
+/* Ensure that links in the header are not underlined */
 header a {
     text-decoration: none;
 }
 
+/* Limit the text displayed in a post preview */
 .preview.card[post_id] {
     transition: max-height ease 0.5s;
     max-height: 5.8em;
     overflow: hidden;
 }
 
+/* When hovering over a post preview massively increase max height */
 .preview.card[post_id]:hover {
     max-height: 9em;
 }
 
+/* Limit the text displayed in the body of a post preview while not hovering */
 .preview.card[post_id]>.body {
     transition: max-height ease 0.5s;
     max-height: 2.5em;
     overflow: hidden;
 }
 
+/* Increase (But still limit) the text displayed in the body of a post preview while hovering */
 .preview.card[post_id]:hover>.body {
     transition: max-height ease 0.5s;
     max-height: 3.2em;
