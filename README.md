@@ -45,6 +45,9 @@ The blog site is a full-stack web application that allows users to create, share
 
 ## Installation
 
+0. Properly install and configure mySQL.
+    See the [mySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) for installation help.
+
 1. Clone the repo
    ```sh
    git clone https://github.com/kwlucas/Tech-Blog.git
